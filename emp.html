@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://cdnjs.cloudfare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+    <script>
+        angular.module ("myapp",[])
+    .controller("myctrl", function($scope,$http)
+    {
+        $http.get('http://127.0.0.1:3022/emp')
+        .success(function(records)
+        { 
+          $scope.employees = records
+        })
+    })
+    </script>
+</head>
+<body ng-app = "myapp" ng-controller = "myctrl">
+    <table border="1">
+        <tr>
+            <td>
+                name 
+            </td>
+            <td>eid</td>
+        </tr>
+        <tr ng-repeat = "items in employees">
+            <td>
+                {{items.name}}
+            </td>
+            <td>
+                {{items.eid}}
+            </td>
+
+        </tr>
+    </table>
+    
+</body>
+</html>
